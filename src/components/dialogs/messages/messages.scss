@@ -1,0 +1,7 @@
+.messages {
+	padding: 10px 0px 10px 20px;
+	&__box {
+		max-height: 950px;
+		overflow-y: auto;
+	}
+}

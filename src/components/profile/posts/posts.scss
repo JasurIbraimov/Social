@@ -1,0 +1,16 @@
+.posts {
+	margin-top: 20px;
+	background-color: #dff9fb;
+	padding: 20px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+	&__title {
+		text-transform: uppercase;
+		color: #000000b0;
+	}
+	form {
+		grid-template-columns: 10fr 1fr;
+		textarea {
+			box-shadow: none;
+		}
+	}
+}

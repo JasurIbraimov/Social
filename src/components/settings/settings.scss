@@ -1,0 +1,12 @@
+.settings {
+	box-shadow: 1px 1px 10px #00000030;
+	background-color: #ecf0f1;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	height: 400px;
+	&__title {
+		margin-bottom: 40px;
+		font-size: 2rem;
+	}
+}

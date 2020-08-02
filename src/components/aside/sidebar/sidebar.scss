@@ -1,0 +1,15 @@
+.sidebar {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	a {
+		grid-column-start: 1;
+		grid-column-end: 4;
+	}
+	div {
+		margin-top: 10px;
+		margin-right: 5px;
+	}
+	span {
+		color: #ffffff;
+	}
+}

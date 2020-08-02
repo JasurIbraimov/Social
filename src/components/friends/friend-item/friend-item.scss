@@ -1,0 +1,9 @@
+.friend-item {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	margin-top: 20px;
+	&__name {
+		font-size: 20px;
+	}
+}

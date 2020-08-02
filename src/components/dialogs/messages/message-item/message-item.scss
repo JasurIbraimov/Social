@@ -1,0 +1,21 @@
+.message {
+	display: grid;
+	grid-template-columns: 90px 450px;
+	align-items: center;
+	margin-bottom: 20px;
+	&__box {
+		margin-right: 5px;
+		margin-left: 15px;
+		padding: 20px;
+		box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+		border: 1px solid  #ecf0f1;
+		grid-column-start: 2;
+		grid-column-end: 3;
+		border-radius: 40px;
+		background-color: #ecf0f1; 
+	}
+	&__item {
+		width: 100%;
+		word-wrap: break-word;
+	}
+}

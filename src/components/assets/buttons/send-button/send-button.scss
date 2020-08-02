@@ -1,0 +1,29 @@
+.send-button {
+	background-color: #ecf0f1;
+	cursor: pointer;
+	box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
+				-2px -2px 12px rgba(255, 255, 255, .5),
+				inset 2px 2px 4px rgba(255, 255, 255, .1),
+				2px 2px 8px rgba(0, 0, 0, 0.3);
+	outline: none;
+	font-size: 36px;
+	height: 60px;
+	width: 60px;
+	margin-left: 10px;
+	border-radius: 100%;	
+	position: relative;
+	&:hover {
+		background-color: #2ecc71;
+		transition: .5s all;
+		span {
+			transform: translate(-50%, -50%) rotate(90deg);
+		}
+	};
+	span {
+		transition: .25s all;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

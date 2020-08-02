@@ -1,0 +1,48 @@
+.user {
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	align-items: center;
+	width: 100%;
+	&__avatar {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 75px 50px;
+		margin: 0 auto;
+
+	}
+	&__box {
+		display: grid;
+		text-align: left;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 1px 1px 10px #00000034;
+	}
+	&__btn {
+		grid-column-start: 1;
+		grid-column-end: 1;
+		margin-top: 12px;
+		grid-row-start: 2;
+		background-color: #2ecc71;
+		width: 150px;
+		border-radius: 5px;
+		text-transform: uppercase;
+		transition: .25s all;
+		font-weight: bold;
+		color: #fff;
+		&:hover {
+			letter-spacing: 1px;
+		}
+	}
+	&__info {
+		display: grid;
+		grid-template-rows: 40px 40px;
+		font-size: 16px;
+	}
+	&__status {
+		padding-top: 10px;
+		color: #000000a4;
+	}
+
+
+}

@@ -1,0 +1,48 @@
+.icon-button {
+	padding: 15px;
+	border-radius: 100%;
+	margin-right: 5px;
+	outline: none;
+	font-size: 18px;
+	box-shadow: 1px 1px 5px #00000010;
+	transition: .25s all;
+	color: #ffffff;
+	&_edit {
+		position: relative;
+		&:hover {
+			box-shadow: 1px 1px 5px #2980b9;
+			svg {
+				transition: .25s all;
+				transform: scale(1.2);
+			}
+		}
+
+	}
+	&_star {
+		&:hover {
+			box-shadow: 1px 1px 5px #f39c12;
+			svg {
+				transition: .7s all;
+				transform: rotate(360deg);
+			}
+		}
+	}
+	&_lock {
+		&:hover {
+			box-shadow: 1px 1px 5px #2c3e50;
+			svg {
+				transition: .25s all;
+				transform: scale(1.2);
+			}
+		}
+	}
+	&_times {
+		&:hover {
+			box-shadow: 1px 1px 5px #c0392b;
+			svg {
+				transition: .25s all;
+				transform: scale(1.2);
+			}
+		}
+	}
+}

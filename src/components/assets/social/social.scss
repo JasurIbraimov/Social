@@ -1,0 +1,33 @@
+.social {
+	font-size: 18px;
+	margin-top: 10px;
+	display: grid;
+	grid-template-columns: 1fr 8fr;
+	align-items: center;
+	&:hover {
+		span {
+			transition: .25s all;
+			color: #2c3e50;
+			font-weight: bold;
+		}
+		div {
+			transform: translateY(-5px);
+		}
+	}
+	&__icon {
+		margin-right: 5px;
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		background-color: #ffffff;
+		transition: .25s all;
+		box-shadow: 1px 1px 10px #00000030;
+		p {
+			border-radius: 100%;
+			padding: 5px;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.error {
+	padding: 40px;
+	margin: 0 auto;
+	text-align: center;
+	box-shadow: 1px 1px 10px #00000030;
+	&__icon {
+		font-size: 60px;
+		margin-bottom: 5px;
+		color: #e74c3c;
+		
+	}
+	&__descr {
+		margin-top: 10px;
+		font-size: 20px;
+	}
+}

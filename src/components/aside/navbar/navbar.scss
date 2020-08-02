@@ -1,0 +1,29 @@
+.navbar {
+	display: block;
+	width: 100%;
+	cursor: pointer;
+	font-size: 22px;
+	padding: 5px;
+	transition: .2s;
+	color: #ffffff;
+	position: relative;
+	&:hover {
+		background-color: #1abc9c;
+	}
+	a {
+		display: inline-block;
+		width: 100%;
+		line-height: 2;
+	}
+	&__icon {
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translate(-50%, -50%);
+	}
+}
+.navbar.active {
+	background-color: #2ecc71;
+	box-shadow: 1px 1px 10px #2ecc71;
+
+}

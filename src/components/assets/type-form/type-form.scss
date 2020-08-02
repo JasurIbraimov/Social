@@ -1,0 +1,24 @@
+.type-form {
+	display: grid;
+	width: 100%;
+	grid-template-columns: 5fr 1fr; 
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	&__textarea {
+		width: 100%;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		padding: 20px;
+		border: none;
+		font-size: 18px;
+		font-family: sans-serif;
+		outline-color: #2ecc71;
+		resize: none;
+		box-shadow: 1px 1px 20px #00000021;
+		&::placeholder {
+			color:#0000004d
+		}
+	}
+}

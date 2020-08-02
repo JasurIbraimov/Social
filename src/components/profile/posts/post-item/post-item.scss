@@ -1,0 +1,53 @@
+.post {
+	font-size: 20px;
+	width: 100%;
+	padding: 20px;
+	background-color: #ffffff;
+	position: relative;
+	margin-bottom: 10px;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 650px;
+	&__stat {
+		text-align: right;
+		align-items: flex-end;
+		display: grid;
+		grid-column-start: 2;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		margin-left: 40px;
+	}
+	&__content {
+		width: 100%;
+		margin-left: 50px;
+		word-wrap: break-word;
+	}
+	&__btn {
+		background-color: transparent;
+		font-size: 20px;
+		outline: none;
+		cursor: pointer;
+		color: #f1c40f;
+		&_dislike {
+			color: #e74c3c;
+		}
+	}
+	&__del {
+		position: absolute;
+		font-size: 20px;
+		top: 50%;
+		left: 35px;
+		transform: translate(-50%, -50%);
+		button {
+			padding: 0;
+			line-height: 1;
+			width: 30px;
+			text-align: center;
+			height: 30px;
+			transition: .25s all;
+			&:hover {
+				box-shadow: 1px 1px 10px #e74c3c;
+			}
+		}
+	}
+
+}

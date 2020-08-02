@@ -1,0 +1,43 @@
+.dialog-list__item {
+	padding: 10px 30px;
+	display: block;
+	cursor: pointer;
+	transition: .2s all;
+	position: relative;
+	font-size: 20px;
+	color: #0000009b;
+	margin-bottom: 10px;
+	line-height: 1;
+	background-color: #ecf0f1;
+	overflow: hidden;
+	&:hover {
+		color: #000000;
+		font-weight: 700;
+		font-size: 21px;
+		&::before {
+			left: 110%;
+		}
+		&::after {
+			background-color: #ffffff;
+		}
+	}
+	&::before {
+		content: '';
+		transition: .5s all;
+		height: 100%;
+		width: 100%;
+		background-color: #fffa65;
+		box-shadow: 1px 1px 20px #fff200;
+		transform-style: preserve-3d;
+		position: absolute;
+		top: 0;
+		left: -110%;
+	}
+}
+
+.dialog-list__item.active {
+	background-color: #fff200;
+	font-weight: 700;
+	color: #000000;
+	box-shadow: 1px 1px 20px #fff200;
+}

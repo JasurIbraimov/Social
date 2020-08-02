@@ -1,0 +1,37 @@
+.header {
+	padding: 10px;
+	background-color: #2980b9;
+	grid-area: header;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	font-size: 22px;
+	color: #ffffff;
+	&__logo {
+		width: 50px;
+		&-descr {
+			margin-left: 5px;
+		}
+	}
+	&__login {
+		display: block;
+		text-align: right;
+		text-transform: uppercase;
+	}
+	&__user {
+		text-align: right;
+		svg {
+			margin-right: 30px;
+		}
+		&-info {
+			text-align: right;
+		}
+		&-name {
+			text-transform: uppercase;
+		}
+		&-email {
+			font-size: 16px;
+		}
+	}
+}
