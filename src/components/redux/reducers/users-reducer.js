@@ -1,4 +1,4 @@
-import {FOLLOW_USER, UNFOLLOW_USER, SET_USERS, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_IS_LOADING} from '../action-types/users-action-types';
+import {FOLLOW_USER, UNFOLLOW_USER, SET_USERS, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_IS_LOADING, SET_FOLLOWING_IN_PROCESS} from '../action-types/users-action-types';
 const initialState = {
 	usersData: [],
 	friends: [	
@@ -9,7 +9,8 @@ const initialState = {
 	pageSize: 5,
 	totalCount: 0,
 	currentPage: 1,
-	isLoading: false
+	isLoading: false,
+	followingInProcess: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -59,6 +60,14 @@ const usersReducer = (state = initialState, action) => {
 			return {
 				...state, 
 				isLoading: action.isLoading
+			}
+		case SET_FOLLOWING_IN_PROCESS: 
+			return {
+				...state, 
+				followingInProcess: action.followingProcess 
+				? [...state.followingInProcess, action.userId] 
+				: state.followingInProcess.filter(userId => action.userId !== userId)
+
 			}
 		default: 
 			return state;

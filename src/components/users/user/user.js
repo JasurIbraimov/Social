@@ -4,7 +4,7 @@ import user from '../../assets/friend/user.png';
 import './user.scss';
 import { Link } from 'react-router-dom';
 import UsersService from '../../services/users-api';
-const User = ({userId, userFollow, userName, status, img, followUser, unfollowUser}) => {
+const User = ({userId, userFollow, userName, status, img, followUser, unfollowUser, followingInProcess, setFollowingInProcess}) => {
 	const service = new UsersService();
 	return (
 		<div className='user'>
@@ -15,28 +15,36 @@ const User = ({userId, userFollow, userName, status, img, followUser, unfollowUs
 				</Link>
 				{
 					userFollow ? <button 
-						style={{backgroundColor: '#2ecc71'}}
-						onClick={() => service.unfollowUsers(userId)
-						.then (response => {
-							console.log(response.data);
-							if(response.data.resultCode === 0) {
-								unfollowUser(userId)
-							}
-						})
-						}  
-						className='user__btn'>отписаться
+					disabled={followingInProcess.some(id => id === userId)}
+						onClick={() => {
+							setFollowingInProcess(true, userId);
+							service.unfollowUsers(userId)
+							.then (response => {
+								console.log(response.data);
+								if(response.data.resultCode === 0) {
+									unfollowUser(userId)
+								}
+								setFollowingInProcess(false, userId);
+							})
+							}  
+						}
+						className='user__btn user__btn_sub'>отписаться
 					</button> 
 					: <button 
-						style={{backgroundColor: '#3498db'}}
-						onClick={() => service.followUsers(userId)
+						disabled={followingInProcess.some(id => id === userId)}
+						onClick={() => {
+							setFollowingInProcess(true, userId);
+							service.followUsers(userId)
 							.then (response => {
 								console.log(response.data)
 								if(response.data.resultCode === 0) {
 									followUser(userId)
+									setFollowingInProcess(false, userId);
 								}
-							})
+								})
 							}    
-						className='user__btn'>подписаться
+						}
+						className='user__btn user__btn_unsub'>подписаться
 					</button>
 				}
 			</div>

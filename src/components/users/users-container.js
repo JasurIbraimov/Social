@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import {followUser, unfollowUser, setUsers, setTotalCount, setCurrentPage, setIsLoading} from '../redux/action-creators/users-action-creators';
+import {followUser, unfollowUser, setUsers, setTotalCount, setCurrentPage, setIsLoading, setFollowingInProcess} from '../redux/action-creators/users-action-creators';
 import Users from './users';
 import UsersService from '../services/users-api';
 class UsersContainer extends Component {
@@ -26,7 +26,7 @@ class UsersContainer extends Component {
 		});
 	}
 	render() {
-		const {usersData, followUser, unfollowUser, totalCount, pageSize, currentPage, isLoading} = this.props;
+		const {usersData, followUser, unfollowUser, totalCount, pageSize, currentPage, isLoading, followingInProcess, setFollowingInProcess} = this.props;
 		return	<Users usersData={usersData}
 			followUser={followUser}
 			unfollowUser={unfollowUser}
@@ -36,6 +36,8 @@ class UsersContainer extends Component {
 			unfollowUserS={this.unfollowUsersService}
 			currentPage={currentPage}
 			setPage={this.setPage}
+			followingInProcess={followingInProcess}
+			setFollowingInProcess={setFollowingInProcess}
 			isLoading={isLoading}/>;
 	}
 }
@@ -47,7 +49,8 @@ const mapStateToProps = (state) => {
 		currentPage: users.currentPage,
 		totalCount: users.totalCount,
 		pageSize: users.pageSize,
-		isLoading: users.isLoading
+		isLoading: users.isLoading,
+		followingInProcess: users.followingInProcess
 	}
 }
 
@@ -57,5 +60,6 @@ export default connect(mapStateToProps, {
 	setUsers,
 	setTotalCount,
 	setCurrentPage,
-	setIsLoading
+	setIsLoading,
+	setFollowingInProcess
 })(UsersContainer);

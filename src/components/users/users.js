@@ -2,7 +2,7 @@ import React from 'react';
 import User from './user';
 import './users.scss';
 import Loading from '../assets/loading';
-const Users = ({usersData, followUser, unfollowUser, totalCount, pageSize, currentPage, setPage, isLoading}) => {
+const Users = ({usersData, followUser, unfollowUser, totalCount, pageSize, currentPage, setPage, isLoading, followingInProcess, setFollowingInProcess}) => {
 	const page = [];
 	const value = Math.ceil(totalCount/pageSize);
 	for (let i = 1125; i <= value; i++) {
@@ -26,6 +26,8 @@ const Users = ({usersData, followUser, unfollowUser, totalCount, pageSize, curre
 				: usersData.map(user => {
 					return (
 							<User 
+								followingInProcess={followingInProcess}
+								setFollowingInProcess={setFollowingInProcess}
 								userFollow={user.followed}
 								userId={user.id}
 								key={user.id}
