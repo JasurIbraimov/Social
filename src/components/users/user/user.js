@@ -3,9 +3,7 @@ import Friend from '../../assets/friend';
 import user from '../../assets/friend/user.png';
 import './user.scss';
 import { Link } from 'react-router-dom';
-import UsersService from '../../services/users-api';
-const User = ({userId, userFollow, userName, status, img, followUser, unfollowUser, followingInProcess, setFollowingInProcess}) => {
-	const service = new UsersService();
+const User = ({userId, userFollow, userName, status, img, followingInProcess, follow, unfollow}) => {
 	return (
 		<div className='user'>
 			<div className='user__avatar'>
@@ -16,34 +14,12 @@ const User = ({userId, userFollow, userName, status, img, followUser, unfollowUs
 				{
 					userFollow ? <button 
 					disabled={followingInProcess.some(id => id === userId)}
-						onClick={() => {
-							setFollowingInProcess(true, userId);
-							service.unfollowUsers(userId)
-							.then (response => {
-								console.log(response.data);
-								if(response.data.resultCode === 0) {
-									unfollowUser(userId)
-								}
-								setFollowingInProcess(false, userId);
-							})
-							}  
-						}
+						onClick={() => unfollow(userId)}
 						className='user__btn user__btn_sub'>отписаться
 					</button> 
 					: <button 
 						disabled={followingInProcess.some(id => id === userId)}
-						onClick={() => {
-							setFollowingInProcess(true, userId);
-							service.followUsers(userId)
-							.then (response => {
-								console.log(response.data)
-								if(response.data.resultCode === 0) {
-									followUser(userId)
-									setFollowingInProcess(false, userId);
-								}
-								})
-							}    
-						}
+						onClick={() => follow(userId)}
 						className='user__btn user__btn_unsub'>подписаться
 					</button>
 				}

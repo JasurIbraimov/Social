@@ -4,7 +4,7 @@
 	cursor: pointer;
 	transition: .2s all;
 	position: relative;
-	font-size: 20px;
+	font-size: 17px;
 	color: #0000009b;
 	margin-bottom: 10px;
 	line-height: 1;
@@ -13,7 +13,7 @@
 	&:hover {
 		color: #000000;
 		font-weight: 700;
-		font-size: 21px;
+		font-size: 19px;
 		&::before {
 			left: 110%;
 		}

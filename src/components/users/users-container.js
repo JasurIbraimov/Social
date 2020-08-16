@@ -1,65 +1,64 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux';
-import {followUser, unfollowUser, setUsers, setTotalCount, setCurrentPage, setIsLoading, setFollowingInProcess} from '../redux/action-creators/users-action-creators';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { follow, getUsers, unfollow } from '../redux/thunks/users-thunks';
 import Users from './users';
-import UsersService from '../services/users-api';
+import {
+	gCurrentPage,
+	gTotalCount,
+	gPageSize,
+	gIsLoading,
+	gFollowingInProcess,
+	gUsersData,
+} from '../redux/selectors/users-selectors';
 class UsersContainer extends Component {
-	service = new UsersService();
 	componentDidMount() {
-		this.props.setIsLoading(true);
-		const {currentPage, pageSize} = this.props;
-		this.service.getUsers(currentPage, pageSize)
-		.then(data => {
-			this.props.setUsers(data.items);
-			this.props.setIsLoading(false);
-			this.props.setTotalCount(data.totalCount);
-		});
+		const { currentPage, pageSize, getUsers } = this.props;
+		getUsers(currentPage, pageSize);
 	}
 	setPage = (currentPage) => {
-		this.props.setIsLoading(true);
-		const {pageSize} = this.props;
-		this.service.getUsers(currentPage, pageSize)
-		.then(data => {
-			this.props.setUsers(data.items);
-			this.props.setCurrentPage(currentPage);
-			this.props.setIsLoading(false);
-		});
-	}
+		const { pageSize, getUsers } = this.props;
+		getUsers(currentPage, pageSize);
+	};
 	render() {
-		const {usersData, followUser, unfollowUser, totalCount, pageSize, currentPage, isLoading, followingInProcess, setFollowingInProcess} = this.props;
-		return	<Users usersData={usersData}
-			followUser={followUser}
-			unfollowUser={unfollowUser}
-			totalCount={totalCount}
-			pageSize={pageSize}
-			followUserS={this.followUsersService}
-			unfollowUserS={this.unfollowUsersService}
-			currentPage={currentPage}
-			setPage={this.setPage}
-			followingInProcess={followingInProcess}
-			setFollowingInProcess={setFollowingInProcess}
-			isLoading={isLoading}/>;
+		const {
+			usersData,
+			totalCount,
+			pageSize,
+			currentPage,
+			isLoading,
+			followingInProcess,
+			follow,
+			unfollow,
+		} = this.props;
+		return (
+			<Users
+				usersData={usersData}
+				totalCount={totalCount}
+				pageSize={pageSize}
+				currentPage={currentPage}
+				setPage={this.setPage}
+				follow={follow}
+				followingInProcess={followingInProcess}
+				unfollow={unfollow}
+				isLoading={isLoading}
+			/>
+		);
 	}
 }
 
 const mapStateToProps = (state) => {
-	const {users} = state;
 	return {
-		usersData: users.usersData,
-		currentPage: users.currentPage,
-		totalCount: users.totalCount,
-		pageSize: users.pageSize,
-		isLoading: users.isLoading,
-		followingInProcess: users.followingInProcess
-	}
-}
+		usersData: gUsersData(state),
+		currentPage: gCurrentPage(state),
+		totalCount: gTotalCount(state),
+		pageSize: gPageSize(state),
+		isLoading: gIsLoading(state),
+		followingInProcess: gFollowingInProcess(state),
+	};
+};
 
 export default connect(mapStateToProps, {
-	followUser,
-	unfollowUser,
-	setUsers,
-	setTotalCount,
-	setCurrentPage,
-	setIsLoading,
-	setFollowingInProcess
+	getUsers,
+	follow,
+	unfollow,
 })(UsersContainer);

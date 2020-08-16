@@ -1,2 +1,1 @@
-export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT';
+export const SEND_MESSAGE = 'dialogs/SEND_MESSAGE';

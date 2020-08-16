@@ -3,46 +3,6 @@
 	text-align: center;
 	width: 100%;
 	&__title {
-		font-size: 2rem;
-	}
-	&__btn {
-		padding: 10px 20px;
-		margin-top: 20px;
-		text-transform: uppercase;
-		font-size: 18px;
-		margin-right: 5px;
-		color: #fff;
-		background-color: #e67e22;
-		overflow: hidden;
-		transition: .5s all;
-		margin-bottom: 20px;
-		position: relative;
-		border-radius: 5px;
-		// &::before {
-		// 	content: attr(data-label);
-		// 	transition: .4s all;
-		// 	height: 100%;
-		// 	width: 100%;
-		// 	padding: 10px 0px;
-		// 	top: 0;
-		// 	background-color: rgba(223, 226, 35, 0.7);
-		// 	position: absolute;
-		// 	left: -200%;
-		// }
-		&:hover {
-			box-shadow: 1px 1px 10px #ff7700;
-			background-color: #ff7700;
-			// &::before {
-			// 	left: 0%;
-			// }
-
-		}
-	}
-}
-
-.users__btn.active {
-	background-color: rgba(223, 226, 35, 1);
-	&:hover {
-		box-shadow: 1px 1px 10px rgba(223, 226, 35, 1);
+		font-size: 1.5rem;
 	}
 }

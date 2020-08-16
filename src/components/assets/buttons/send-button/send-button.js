@@ -1,8 +1,10 @@
 import React from 'react';
 import './send-button.scss';
-const SendButton = ({label}) => {
+const SendButton = ({ label, type, disabled }) => {
 	return (
-		<button className='send-button'><span>{label}</span></button>
+		<button disabled={disabled} type={type} className='send-button'>
+			<span>{label}</span>
+		</button>
 	);
 };
 

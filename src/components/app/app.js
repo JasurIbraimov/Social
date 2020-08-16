@@ -1,51 +1,58 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { Component, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withSuspense } from '../hoc/withSuspense';
 import HeaderContainer from '../header';
 import Aside from '../aside/';
 import Profile from '../profile';
 import Dialogs from '../dialogs';
-import Settings from '../settings';
+import Login from '../login';
 import WelcomePage from '../welcome-page';
 import UsersContainer from '../users';
-import News from '../news';
-import MusicContainer from '../music';
 import Friends from '../friends';
 import './app.scss';
-const App = () => {
-	return (
-		<div className='app-wrapper'>
-			<Router>
-				<HeaderContainer/>
-				<Aside/>
-				<Switch>
-					<Route path='/profile/:userId?'>
-						<Profile/>
-					</Route>
-					<Route path='/dialogs'>
-						<Dialogs/>
-					</Route>
-					<Route path='/news'>
-						<News/>
-					</Route>
-					<Route path='/friends'>
-						<Friends/>
-					</Route>
-					<Route path='/music'>
-						<MusicContainer/>
-					</Route>
-					<Route path='/users'>
-						<UsersContainer/>
-					</Route>
-					<Route path='/settings'>
-						<Settings/>
-					</Route>
-					<Route path='/'>
-						<WelcomePage/>
-					</Route>
-				</Switch>
-			</Router>
-		</div>
-	)
+const MusicContainer = lazy(() => import('../music'));
+const Settings = lazy(() => import('../settings'));
+const News = lazy(() => import('../news'));
+class App extends Component {
+	render() {
+		return (
+			<div className='app-wrapper'>
+				<Router>
+					<HeaderContainer />
+					<Aside isAuth={this.props.isAuth} />
+					<Switch>
+						<Route path='/profile/:userId?'>
+							<Profile />
+						</Route>
+						<Route path='/dialogs'>
+							<Dialogs />
+						</Route>
+						<Route path='/news'>{withSuspense(News)}</Route>
+						<Route path='/friends'>
+							<Friends />
+						</Route>
+						<Route path='/music'>{withSuspense(MusicContainer)}</Route>
+						<Route path='/users'>
+							<UsersContainer />
+						</Route>
+						<Route path='/settings'>{withSuspense(Settings)}</Route>
+						<Route path='/login'>
+							<Login />
+						</Route>
+						<Route path='/'>
+							<WelcomePage />
+						</Route>
+					</Switch>
+				</Router>
+			</div>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	return {
+		isAuth: state.auth.isAuth,
+	};
+};
+export default connect(mapStateToProps)(App);

@@ -2,9 +2,9 @@
 	display: block;
 	width: 100%;
 	cursor: pointer;
-	font-size: 22px;
-	padding: 5px;
-	transition: .2s;
+	font-size: 19px;
+	padding: 5px 20px;
+	transition: 0.2s;
 	color: #ffffff;
 	position: relative;
 	&:hover {
@@ -25,5 +25,4 @@
 .navbar.active {
 	background-color: #2ecc71;
 	box-shadow: 1px 1px 10px #2ecc71;
-
 }

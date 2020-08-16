@@ -2,11 +2,11 @@
 	display: grid;
 	max-width: 1200px;
 	margin: 0 auto;
-	grid-template-areas: 
-	"header header"
-	"aside main";
+	grid-template-areas:
+		'header header'
+		'aside main';
 	grid-template-rows: 70px 1fr;
-	grid-template-columns: 2fr 10fr;
+	grid-template-columns: 270px 10fr;
 	grid-gap: 10px;
 	// min-height: 1100px;
 	min-height: 100vh;

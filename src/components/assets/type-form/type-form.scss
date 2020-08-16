@@ -1,7 +1,7 @@
 .type-form {
 	display: grid;
 	width: 100%;
-	grid-template-columns: 5fr 1fr; 
+	grid-template-columns: 5fr 1fr;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 30px;
@@ -18,7 +18,7 @@
 		resize: none;
 		box-shadow: 1px 1px 20px #00000021;
 		&::placeholder {
-			color:#0000004d
+			color: #0000004d;
 		}
 	}
 }

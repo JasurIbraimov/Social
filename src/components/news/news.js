@@ -4,8 +4,7 @@ import Loading from '../assets/loading';
 const News = () => {
 	return (
 		<div>
-			<Loading label='В поиске новостей...'/>
-			
+			<Loading label='В поиске новостей...' />
 		</div>
 	);
 };

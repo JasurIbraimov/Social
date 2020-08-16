@@ -1,0 +1,23 @@
+.profile-status {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	&__input {
+		width: 500px;
+		outline: none;
+		font-size: 16px;
+		border: 1px solid #2ecc71;
+	}
+	&__btn {
+		width: 20px;
+		height: 20px;
+		background-color: #2ecc71;
+		color: #fff;
+		position: absolute;
+		right: 3px;
+		font-size: 16px;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

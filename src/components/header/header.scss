@@ -2,12 +2,29 @@
 	padding: 10px;
 	background-color: #2980b9;
 	grid-area: header;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	font-size: 22px;
+	font-size: 18px;
 	color: #ffffff;
+	&__links {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	&__spin {
+		margin-right: 30px;
+	}
+	&__exit {
+		margin-left: 30px;
+		display: flex;
+		align-items: center;
+		text-transform: uppercase;
+		&-icon {
+			margin-left: 5px;
+		}
+	}
 	&__logo {
 		width: 50px;
 		&-descr {
@@ -18,12 +35,12 @@
 		display: block;
 		text-align: right;
 		text-transform: uppercase;
+		&-icon {
+			margin-left: 5px;
+		}
 	}
 	&__user {
 		text-align: right;
-		svg {
-			margin-right: 30px;
-		}
 		&-info {
 			text-align: right;
 		}
@@ -31,7 +48,7 @@
 			text-transform: uppercase;
 		}
 		&-email {
-			font-size: 16px;
+			font-size: 14px;
 		}
 	}
 }

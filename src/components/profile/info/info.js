@@ -4,7 +4,8 @@ import Social from '../../assets/social';
 import user from '../../assets/friend/user.png';
 import {faFacebook, faGithub, faVk} from '@fortawesome/free-brands-svg-icons';
 import './info.scss';
-const Info = ({userProfile}) => {
+import ProfileStatus from '../profile-status';
+const Info = ({userProfile, userStatus, updateStatus}) => {
 	if (!userProfile) {
 		return <Loading label='Подгружаем информацию о пользователе...'/>
 	} else {
@@ -22,13 +23,7 @@ const Info = ({userProfile}) => {
 								<span>{userProfile.aboutMe}</span>
 							</ul>
 							<ul>
-								<span>
-								<strong>Статус:</strong>
-								</span>
-								<span>{
-									userProfile.lookingForAJob ? 'ищу работу' : 'не ищу работу'
-								}
-								</span>
+								<ProfileStatus updateStatus={updateStatus} userStatus={userStatus}/>
 							</ul>
 							<ul>
 								<span>
