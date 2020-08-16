@@ -1,0 +1,2 @@
+.settings-item{transition:all .25s;padding:10px;width:100%;display:grid;grid-template-columns:1fr 3fr 1fr 1fr;align-items:center}.settings-item__icon{font-size:36px}.settings-item__descr{font-size:16px}.settings-item__btn{font-size:14px;margin-right:7px;padding:10px 20px;border-radius:5px;cursor:pointer;text-transform:uppercase;color:#fff}.settings{box-shadow:1px 1px 10px rgba(0,0,0,.19);background-color:#ecf0f1;padding:20px;text-align:center;width:100%;height:400px}.settings__title{margin-bottom:40px;font-size:1.5rem}
+/*# sourceMappingURL=4.8dd8698c.chunk.css.map */
