@@ -44,4 +44,17 @@ export default class UsersService {
 	logoutUser = async () => {
 		return await this._usersApi.delete('/auth/login');
 	};
+	saveUserPhotos = async (photos) => {
+		const formData = new FormData();
+		formData.append('image', photos);
+		return await this._usersApi.put(`/profile/photo`, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		});
+	};
+	saveUserProfile = async (profile) => {
+		// console.log({ ...profile });
+		return await this._usersApi.put(`/profile`, profile);
+	};
 }

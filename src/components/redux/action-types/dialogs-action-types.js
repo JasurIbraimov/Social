@@ -1,1 +1,1 @@
-export const SEND_MESSAGE = 'dialogs/SEND_MESSAGE';
+export const DIALOGS_SEND_MESSAGE = 'dialogs/SEND_MESSAGE';

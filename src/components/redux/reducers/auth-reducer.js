@@ -1,38 +1,45 @@
 import {
-	AUTH_USER,
-	SET_AUTH_USER_DATA,
-	SET_LOADING,
-	SET_USER_LOGIN,
+	AUTH_AUTHORIZE_USER,
+	AUTH_SET_USER_DATA,
+	AUTH_SET_USER_LOGIN,
+	AUTH_SET_IS_LOADING,
+	AUTH_SET_LOGIN_STATUS,
 } from '../action-types/auth-action-types';
 const initialState = {
 	email: null,
 	userId: null,
 	login: null,
+	loginStatus: '',
 	isAuth: false,
 	isLoading: false,
 };
 
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SET_AUTH_USER_DATA:
+		case AUTH_SET_USER_DATA:
 			return {
 				...state,
 				...action.data,
 			};
-		case AUTH_USER:
+		case AUTH_AUTHORIZE_USER:
 			return {
 				...state,
 				isAuth: action.isAuth,
 			};
-		case SET_LOADING:
+		case AUTH_SET_USER_LOGIN:
+			return {
+				...state,
+				login: action.login,
+			};
+		case AUTH_SET_IS_LOADING:
 			return {
 				...state,
 				isLoading: action.isLoading,
 			};
-		case SET_USER_LOGIN:
+		case AUTH_SET_LOGIN_STATUS:
 			return {
 				...state,
-				login: action.login,
+				loginStatus: action.loginStatus,
 			};
 
 		default:

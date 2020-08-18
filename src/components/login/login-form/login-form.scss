@@ -12,9 +12,9 @@
 		box-shadow: 1px 1px 10px #00000020;
 		flex-direction: column;
 		align-items: center;
-		&-error {
-			padding: 20px;
-			background-color: #00000050;
+		&-failure {
+			padding: 20px 10px;
+			color: red;
 		}
 	}
 	&__field {

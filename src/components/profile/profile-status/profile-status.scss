@@ -1,23 +1,49 @@
 .profile-status {
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+	flex-direction: column;
 	position: relative;
+	padding: 10px 20px;
+	background-color: #ecf0f1;
+	box-shadow: 1px 1px 10px #00000030;
+	margin-top: 20px;
+	&__descr {
+		font-size: 1.5rem;
+		color: #524f4f;
+	}
+	&__main {
+		padding: 10px 0px;
+		width: 100%;
+		font-size: 1.1rem;
+	}
 	&__input {
-		width: 500px;
+		width: 100%;
+		margin-top: 10px;
 		outline: none;
+		padding: 10px 20px;
 		font-size: 16px;
 		border: 1px solid #2ecc71;
 	}
 	&__btn {
-		width: 20px;
-		height: 20px;
+		width: 39px;
+		height: 39px;
 		background-color: #2ecc71;
-		color: #fff;
 		position: absolute;
-		right: 3px;
-		font-size: 16px;
+		font-size: 2rem;
 		top: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(-100%, 0%);
+		span {
+			transition: 0.25s all;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		&:hover {
+			background-color: #2ecc71;
+			transition: 0.5s all;
+			span {
+				transform: translate(-50%, -50%) rotate(90deg);
+			}
+		}
 	}
 }

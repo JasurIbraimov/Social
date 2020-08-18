@@ -52,8 +52,8 @@ const mapStateToProps = (state) => {
 		currentPage: gCurrentPage(state),
 		totalCount: gTotalCount(state),
 		pageSize: gPageSize(state),
-		isLoading: gIsLoading(state),
 		followingInProcess: gFollowingInProcess(state),
+		isLoading: gIsLoading(state),
 	};
 };
 

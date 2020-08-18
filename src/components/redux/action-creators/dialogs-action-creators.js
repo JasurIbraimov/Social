@@ -1,5 +1,5 @@
-import { SEND_MESSAGE } from '../action-types/dialogs-action-types';
+import { DIALOGS_SEND_MESSAGE } from '../action-types/dialogs-action-types';
 export const sendMessage = (messageText) => ({
-	type: SEND_MESSAGE,
+	type: DIALOGS_SEND_MESSAGE,
 	messageText,
 });

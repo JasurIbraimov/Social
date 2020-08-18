@@ -1,4 +1,4 @@
-import { SEND_MESSAGE } from '../action-types/dialogs-action-types';
+import { DIALOGS_SEND_MESSAGE } from '../action-types/dialogs-action-types';
 const initialState = {
 	dialogsData: [{ id: 1, label: 'Андрей' }],
 	messageData: [
@@ -13,7 +13,7 @@ const initialState = {
 };
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SEND_MESSAGE: {
+		case DIALOGS_SEND_MESSAGE: {
 			const newMessage = {
 				id: 1,
 				label: state.messageData[0].label,

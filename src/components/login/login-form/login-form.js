@@ -11,7 +11,7 @@ import {
 } from '../../helpers/validators';
 import './login-form.scss';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, loginStatus }) => {
 	const [visible, setVisible] = useState(false);
 	const [visibleConfirm, setVisibleConfirm] = useState(false);
 	return (
@@ -88,7 +88,11 @@ const LoginForm = ({ onSubmit }) => {
 								Reset
 							</button>
 						</div>
-						{props.submitError && <div>{props.submitError}</div>}
+						{loginStatus === 'failure' ? (
+							<div className='login__form-failure'>
+								Неправильный пароль или имя пользователя!
+							</div>
+						) : null}
 					</form>
 				);
 			}}

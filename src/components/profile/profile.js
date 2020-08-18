@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import InfoContainer from './info';
 import Wallpaper from './wallpaper';
 import './profile.scss';
@@ -14,4 +15,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile;
+export default connect()(Profile);

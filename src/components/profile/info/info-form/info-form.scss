@@ -1,0 +1,31 @@
+.info-form {
+	display: flex;
+	flex-direction: column;
+	&__label {
+		margin-top: 5px;
+		font-size: 14px;
+		color: #00000070;
+	}
+	&__field {
+		padding: 5px;
+		border: none;
+		border-radius: 5px;
+		border: 1px solid #00000030;
+		margin-top: 5px;
+		outline: none;
+		&:focus {
+			border: 1px solid #000000;
+		}
+	}
+	&__btn {
+		padding: 10px;
+		margin-top: 10px;
+		color: #ffffff;
+		border-radius: 5px;
+		background-color: #2ecc71;
+		transition: 0.25s all;
+		&:hover {
+			box-shadow: 1px 1px 10px #2ecc71;
+		}
+	}
+}

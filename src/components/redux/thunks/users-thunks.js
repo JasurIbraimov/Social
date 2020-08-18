@@ -1,13 +1,13 @@
 import UsersService from '../../services/users-api';
 import {
 	setUsers,
-	setIsLoading,
 	setTotalCount,
 	setCurrentPage,
 	setFollowingInProcess,
 	unfollowUser,
 	followUser,
 } from '../action-creators/users-action-creators';
+import { setIsLoading } from '../action-creators/app-action-creators';
 const service = new UsersService();
 export const getUsers = (currentPage, pageSize) => async (dispatch) => {
 	dispatch(setIsLoading(true));
@@ -17,27 +17,22 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
 	dispatch(setTotalCount(data.totalCount));
 	dispatch(setCurrentPage(currentPage));
 };
-const thunk = (dispatch, userId, func) => {
-	if (func === followUser) {
-		service.followUser(userId).then((response) => {
-			if (response.data.resultCode === 0) {
-				dispatch(followUser(userId));
-			}
-			dispatch(setFollowingInProcess(false, userId));
-		});
-	} else if (func === unfollowUser) {
-		service.unfollowUser(userId).then((response) => {
-			if (response.data.resultCode === 0) {
-				dispatch(unfollowUser(userId));
-			}
-			dispatch(setFollowingInProcess(false, userId));
-		});
-	}
-};
 
 export const follow = (userId) => (dispatch) => {
-	thunk(dispatch, userId, followUser);
+	dispatch(setFollowingInProcess(true, userId));
+	service.followUser(userId).then((response) => {
+		if (response.data.resultCode === 0) {
+			dispatch(followUser(userId));
+		}
+		dispatch(setFollowingInProcess(false, userId));
+	});
 };
 export const unfollow = (userId) => (dispatch) => {
-	thunk(dispatch, userId, unfollowUser);
+	dispatch(setFollowingInProcess(true, userId));
+	service.unfollowUser(userId).then((response) => {
+		if (response.data.resultCode === 0) {
+			dispatch(unfollowUser(userId));
+		}
+		dispatch(setFollowingInProcess(false, userId));
+	});
 };

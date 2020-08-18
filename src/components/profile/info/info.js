@@ -1,61 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Loading from '../../assets/loading';
-import Social from '../../assets/social';
-import user from '../../assets/friend/user.png';
-import {faFacebook, faGithub, faVk} from '@fortawesome/free-brands-svg-icons';
+import Avatar from '../../assets/avatar/avatar';
+import InfoPoints from './info-points';
+import Contacts from '../../assets/contacts/contacts';
 import './info.scss';
-import ProfileStatus from '../profile-status';
-const Info = ({userProfile, userStatus, updateStatus}) => {
+import InfoForm from './info-form';
+import EditButton from '../../assets/buttons/edit-button';
+const Info = ({
+	userProfile,
+	ownProfile,
+	updateUserPhotos,
+	updateUserProfile,
+}) => {
+	const [editMode, setEditMode] = useState(false);
 	if (!userProfile) {
-		return <Loading label='Подгружаем информацию о пользователе...'/>
-	} else {
-		return (
-			<section className='info'>
-						<div className='info__avatar'>
-							<img alt='avatar' src={userProfile.photos.large ? userProfile.photos.large : user}/>
-						</div>
-						<div className='info__descr'>
-							<h2>{userProfile.fullName}</h2>
-							<ul>
-								<span>
-								<strong>Обо мне:</strong>
-								</span>
-								<span>{userProfile.aboutMe}</span>
-							</ul>
-							<ul>
-								<ProfileStatus updateStatus={updateStatus} userStatus={userStatus}/>
-							</ul>
-							<ul>
-								<span>
-								<strong>Описание:</strong>
-								</span>
-								<span>{userProfile.lookingForAJobDescription}</span>
-							</ul>
-							<ul>
-								<span>
-								<strong>Контакты:</strong>
-								</span>
-								<span>
-									<div>
-										{
-											userProfile.contacts.facebook ? <Social color='#2980b9' label={userProfile.contacts.facebook} icon={faFacebook} /> : null
-										}
-										{
-											userProfile.contacts.github ?<Social color='#34495e' label={userProfile.contacts.github} icon={faGithub} /> : null
-										}
-										{
-											userProfile.contacts.vk ? <Social color='#3498db' label={userProfile.contacts.vk} icon={faVk} /> : null
-										}
-										
-										
-									</div>
-								</span>
-							</ul>
-						</div>
-					</section>
-		)
+		return <Loading label='Подгружаем информацию о пользователе...' />;
 	}
-	
-}
+	const onUserPhotoChange = (e) => {
+		if (e.target.files.length) {
+			updateUserPhotos(e.target.files[0]);
+		}
+	};
+	const submitFormChanges = (formData) => {
+		updateUserProfile(formData);
+	};
+	return (
+		<section className='info'>
+			<Avatar
+				userProfilePhotos={userProfile.photos.large}
+				ownProfile={ownProfile}
+				onUserPhotoChange={onUserPhotoChange}
+			/>
+			<div className='info__descr'>
+				{editMode ? (
+					<InfoForm
+						userProfile={userProfile}
+						initialValues={userProfile}
+						onSubmit={(formData) => submitFormChanges(formData)}
+					/>
+				) : (
+					<>
+						<h2>{userProfile.fullName}</h2>
+						<InfoPoints infoLabel='Обо мне' infoPoint={userProfile.aboutMe} />
+						<InfoPoints
+							infoLabel='В поисках работы'
+							infoPoint={
+								userProfile.lookingForAJob ? 'ищу работу' : 'не ищу работу'
+							}
+						/>
+						{userProfile.lookingForAJob && (
+							<InfoPoints
+								infoLabel='Описание'
+								infoPoint={userProfile.lookingForAJobDescription}
+							/>
+						)}
+						<Contacts userProfileContacts={userProfile.contacts} />
+						{ownProfile && <EditButton setEditMode={setEditMode} />}
+					</>
+				)}
+			</div>
+		</section>
+	);
+};
 
 export default Info;

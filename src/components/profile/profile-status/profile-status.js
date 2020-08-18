@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './profile-status.scss';
-const ProfileStatus = ({ updateStatus, userStatus }) => {
+import EditButton from '../../assets/buttons/edit-button';
+const ProfileStatus = ({ updateStatus, userStatus, ownProfile }) => {
 	const [editMode, setEditMode] = useState(false);
 	const [status, setStatus] = useState(userStatus);
 	useEffect(() => {
@@ -15,10 +16,10 @@ const ProfileStatus = ({ updateStatus, userStatus }) => {
 		setEditMode(false);
 	};
 	return (
-		<span className='profile-status'>
-			<span>
-				<strong>Статус:</strong>
-			</span>
+		<li className='profile-status'>
+			<div className='profile-status__descr'>
+				<strong>Статус </strong>
+			</div>
 			{editMode ? (
 				<form onSubmit={(e) => disactivateEditMode(e)}>
 					<input
@@ -26,16 +27,19 @@ const ProfileStatus = ({ updateStatus, userStatus }) => {
 						autoFocus
 						value={status}
 						onChange={(e) => onStatusChange(e)}
-						onBlur={() => setEditMode(false)}
+						onBlur={(e) => disactivateEditMode(e)}
 					/>
-					<button className='profile-status__btn'>^</button>
+					<button className='profile-status__btn'>
+						<span>&#9998;</span>
+					</button>
 				</form>
 			) : (
-				<span onDoubleClick={() => setEditMode(true)}>
+				<div className='profile-status__main'>
 					{status ? status : 'нет статуса'}
-				</span>
+				</div>
 			)}
-		</span>
+			{ownProfile && <EditButton setEditMode={setEditMode} />}
+		</li>
 	);
 };
 

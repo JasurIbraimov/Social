@@ -4,7 +4,7 @@ import { login } from '../redux/thunks/auth-thunks';
 import { Redirect } from 'react-router-dom';
 import LoginForm from './login-form';
 
-const Login = ({ login, isAuth }) => {
+const Login = ({ login, isAuth, loginStatus }) => {
 	const onFormSubmit = (data) => {
 		login(data.email, data.password, data.rememberMe);
 	};
@@ -13,7 +13,7 @@ const Login = ({ login, isAuth }) => {
 			{isAuth ? (
 				<Redirect to='/profile' />
 			) : (
-				<LoginForm onSubmit={onFormSubmit} />
+				<LoginForm onSubmit={onFormSubmit} loginStatus={loginStatus} />
 			)}
 		</div>
 	);
@@ -21,6 +21,7 @@ const Login = ({ login, isAuth }) => {
 const mapStateToProps = (state) => {
 	return {
 		isAuth: state.auth.isAuth,
+		loginStatus: state.auth.loginStatus,
 	};
 };
 export default connect(mapStateToProps, { login })(Login);

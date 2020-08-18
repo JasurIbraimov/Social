@@ -1,34 +1,31 @@
 .info {
 	margin-top: 20px;
+	position: relative;
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 1fr 2fr;
 	background-color: #ecf0f1;
 	padding: 10px;
-	grid-gap: 20px;
-	box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
-	&__avatar {
-		margin: 0 auto;
-		img {
-			max-width: 100%;
-			max-height: 100%;
-			object-fit: cover;
-		}
-	}
+	grid-gap: 10px;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 	&__descr {
 		grid-column: 2;
 		h2 {
 			color: #524f4f;
 			text-transform: uppercase;
-			font-size: 20px
+			font-size: 20px;
 		}
-		ul {
-			margin-top: 10px;
-			span {
-				line-height: 1;
-				font-size: 16px;
-				margin-right: 7px;
-			}
+	}
+	&__change-btn {
+		position: absolute;
+		right: 0;
+		top: 0;
+		font-size: 1.2rem;
+		transition: 0.25s all;
+		color: #34495e;
+		outline: none;
+		&:hover {
+			color: #2ecc71;
 		}
 	}
 }

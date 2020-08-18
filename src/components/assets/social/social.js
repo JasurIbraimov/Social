@@ -1,13 +1,23 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './social.scss';
 
-const Social = ({label, icon, color}) => {
+const Social = ({ label, icon, color }) => {
 	return (
-		<a href={`https://www.${label}`} target='_blank' rel="noopener noreferrer"  className='social'>
-			<div className='social__icon'>
-				<p style={{border: `1px solid ${color}`, color:`${color}`}}>
-					<FontAwesomeIcon icon={icon}/>
+		<a
+			href={label}
+			target='_blank'
+			rel='noopener noreferrer'
+			className='social'
+		>
+			<div
+				style={{
+					boxShadow: `1px 1px 5px ${color}`,
+				}}
+				className='social__icon'
+			>
+				<p style={{ color: `${color}` }}>
+					<FontAwesomeIcon icon={icon} />
 				</p>
 			</div>
 			<span className='social__link'>{label}</span>

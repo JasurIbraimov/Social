@@ -1,0 +1,12 @@
+.edit-button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 1.2rem;
+	transition: 0.25s all;
+	color: #3498db;
+	outline: none;
+	&:hover {
+		color: #2ecc71;
+	}
+}

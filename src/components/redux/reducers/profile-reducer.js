@@ -1,7 +1,8 @@
 import {
-	ADD_POST,
-	SET_USER_PROFILE,
-	SET_USER_STATUS,
+	PROFILE_ADD_POST,
+	PROFILE_SET_USER_PROFILE,
+	PROFILE_SET_USER_STATUS,
+	PROFILE_SET_USER_PHOTOS,
 } from '../action-types/profile-action-types';
 const initialState = {
 	postData: [],
@@ -10,7 +11,7 @@ const initialState = {
 };
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_POST:
+		case PROFILE_ADD_POST:
 			const newPost = {
 				id: 6,
 				text: action.postText,
@@ -21,15 +22,23 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				postData: [...state.postData, newPost],
 			};
-		case SET_USER_PROFILE:
+		case PROFILE_SET_USER_PROFILE:
 			return {
 				...state,
 				userProfile: action.userProfile,
 			};
-		case SET_USER_STATUS:
+		case PROFILE_SET_USER_STATUS:
 			return {
 				...state,
 				userStatus: action.userStatus,
+			};
+		case PROFILE_SET_USER_PHOTOS:
+			return {
+				...state,
+				userProfile: {
+					...state.userProfile,
+					photos: action.photos,
+				},
 			};
 		default:
 			return state;

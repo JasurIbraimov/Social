@@ -1,11 +1,10 @@
 import {
-	FOLLOW_USER,
-	UNFOLLOW_USER,
-	SET_USERS,
-	SET_TOTAL_COUNT,
-	SET_CURRENT_PAGE,
-	SET_IS_LOADING,
-	SET_FOLLOWING_IN_PROCESS,
+	USERS_FOLLOW_USER,
+	USERS_UNFOLLOW_USER,
+	USERS_SET_USERS,
+	USERS_SET_TOTAL_COUNT,
+	USERS_SET_CURRENT_PAGE,
+	USERS_SET_FOLLOWING_IN_PROCESS,
 } from '../action-types/users-action-types';
 const initialState = {
 	usersData: [],
@@ -44,13 +43,12 @@ const initialState = {
 	pageSize: 5,
 	totalCount: 0,
 	currentPage: 1,
-	isLoading: false,
 	followingInProcess: [],
 };
 
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case FOLLOW_USER:
+		case USERS_FOLLOW_USER:
 			return {
 				...state,
 				usersData: state.usersData.map((user) => {
@@ -63,7 +61,7 @@ const usersReducer = (state = initialState, action) => {
 					return user;
 				}),
 			};
-		case UNFOLLOW_USER:
+		case USERS_UNFOLLOW_USER:
 			return {
 				...state,
 				usersData: state.usersData.map((user) => {
@@ -76,27 +74,22 @@ const usersReducer = (state = initialState, action) => {
 					return user;
 				}),
 			};
-		case SET_USERS:
+		case USERS_SET_USERS:
 			return {
 				...state,
 				usersData: [...action.users],
 			};
-		case SET_TOTAL_COUNT:
+		case USERS_SET_TOTAL_COUNT:
 			return {
 				...state,
 				totalCount: action.totalCount,
 			};
-		case SET_CURRENT_PAGE:
+		case USERS_SET_CURRENT_PAGE:
 			return {
 				...state,
 				currentPage: action.currentPage,
 			};
-		case SET_IS_LOADING:
-			return {
-				...state,
-				isLoading: action.isLoading,
-			};
-		case SET_FOLLOWING_IN_PROCESS:
+		case USERS_SET_FOLLOWING_IN_PROCESS:
 			return {
 				...state,
 				followingInProcess: action.followingProcess
